@@ -27,7 +27,7 @@ class LoadingAnimation extends StatelessWidget {
             width: 40,
             height: 40,
             child: CircularProgressIndicator(
-              color: ConstantsColor.appColorP,
+              color: ConstantsColor.appColorW,
             ),
           ),
         ),

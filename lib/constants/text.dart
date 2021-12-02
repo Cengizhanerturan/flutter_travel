@@ -66,6 +66,12 @@ class ConstantsText {
     fontFamily: textFontFamily,
     fontSize: 16,
   );
+  static const TextStyle textStyle16WB = TextStyle(
+    color: ConstantsColor.textColor1,
+    fontWeight: FontWeight.bold,
+    fontFamily: textFontFamily,
+    fontSize: 16,
+  );
   static const TextStyle textStyle16P = TextStyle(
     color: ConstantsColor.textColor5,
     fontFamily: textFontFamily,
