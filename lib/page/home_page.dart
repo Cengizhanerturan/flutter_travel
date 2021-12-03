@@ -1,3 +1,4 @@
+import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_travel/constants/color.dart';
 import 'package:flutter_travel/constants/text.dart';
@@ -63,12 +64,14 @@ class HomePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 0;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 0;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 0
@@ -91,12 +94,14 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 1;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 1;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 1
@@ -119,12 +124,14 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 2;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 2;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 2
@@ -147,12 +154,14 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 3;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 3;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 3
@@ -175,12 +184,14 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 4;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 4;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 4
@@ -203,12 +214,14 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: 15,
                     ),
-                    InkWell(
-                      onTap: () {
-                        _mainController.aracSecimi.value = 5;
-                      },
-                      child: Obx(
-                        () => Container(
+                    Obx(
+                      () => BouncingWidget(
+                        onPressed: () {
+                          _mainController.aracSecimi.value = 5;
+                        },
+                        duration: Duration(milliseconds: 200),
+                        scaleFactor: 1.5,
+                        child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: _mainController.aracSecimi.value == 5

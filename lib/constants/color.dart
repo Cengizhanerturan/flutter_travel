@@ -7,6 +7,7 @@ class ConstantsColor {
   static const Color textColor3 = Colors.black;
   static const Color textColor4 = Colors.grey;
   static const Color textColor5 = Colors.purple;
+  static const Color textColor6 = Colors.red;
   static const Color appColorW = Colors.white;
   static const Color appColorWD = Color.fromARGB(255, 235, 235, 235);
   static const Color appColorY = Colors.yellow;

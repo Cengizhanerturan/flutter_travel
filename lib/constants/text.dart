@@ -186,4 +186,22 @@ class ConstantsText {
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle textStyle36WB = TextStyle(
+    color: ConstantsColor.textColor1,
+    fontFamily: textFontFamily,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle textStyle36RB = TextStyle(
+    color: ConstantsColor.textColor6,
+    fontFamily: textFontFamily,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle textStyle46WB = TextStyle(
+    color: ConstantsColor.textColor1,
+    fontFamily: textFontFamily,
+    fontSize: 46,
+    fontWeight: FontWeight.bold,
+  );
 }
