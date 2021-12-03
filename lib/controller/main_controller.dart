@@ -1,6 +1,10 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 
-class ListeController extends GetxController {
+class MainController extends GetxController {
+  var aracSecimi = 0.obs;
+  var biletAdedi = 1.obs;
+  var biletUcreti = 0.obs;
   List itemList = [
     {
       "sehir": "Amsterdam",

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travel/constants/color.dart';
 import 'package:flutter_travel/constants/text.dart';
-import 'package:flutter_travel/data/liste.dart';
+import 'package:flutter_travel/controller/main_controller.dart';
 import 'package:flutter_travel/page/detay_page.dart';
 import 'package:get/get.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-ListeController _listeController = Get.put(ListeController());
+MainController _mainController = Get.put(MainController());
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -63,102 +63,168 @@ class HomePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorG.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'All',
-                          style: ConstantsText.textStyle16B,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 0;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 0
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'All',
+                              style: _mainController.aracSecimi.value == 0
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorR.withOpacity(0.8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'Flight',
-                          style: ConstantsText.textStyle16W,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 1;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 1
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'Flight',
+                              style: _mainController.aracSecimi.value == 1
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorG.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'Cruise',
-                          style: ConstantsText.textStyle16B,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 2;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 2
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'Train',
+                              style: _mainController.aracSecimi.value == 2
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorG.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'Train',
-                          style: ConstantsText.textStyle16B,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 3;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 3
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'Bus',
+                              style: _mainController.aracSecimi.value == 3
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorG.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'Cars',
-                          style: ConstantsText.textStyle16B,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 4;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 4
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'Cruise',
+                              style: _mainController.aracSecimi.value == 4
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ConstantsColor.appColorG.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 4.0),
-                        child: Text(
-                          'Motors',
-                          style: ConstantsText.textStyle16B,
+                    InkWell(
+                      onTap: () {
+                        _mainController.aracSecimi.value = 5;
+                      },
+                      child: Obx(
+                        () => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: _mainController.aracSecimi.value == 5
+                                ? ConstantsColor.appColorR.withOpacity(0.8)
+                                : ConstantsColor.appColorG.withOpacity(0.3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 4.0),
+                            child: Text(
+                              'Motors',
+                              style: _mainController.aracSecimi.value == 5
+                                  ? ConstantsText.textStyle16W
+                                  : ConstantsText.textStyle16B,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -172,57 +238,60 @@ class HomePage extends StatelessWidget {
                 child: StaggeredGridView.countBuilder(
                   crossAxisCount: 4,
                   shrinkWrap: true,
-                  itemCount: _listeController.itemList.length,
+                  itemCount: _mainController.itemList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => DetayPage(
-                              index: index,
-                              liste: _listeController.itemList,
-                            ),
-                          ),
+                        Get.to(
+                          () => DetayPage(
+                              index: index, liste: _mainController.itemList),
                         );
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          image: DecorationImage(
-                            image: AssetImage(
-                              _listeController.itemList[index]['fotograf'],
+                      child: Hero(
+                        tag: _mainController.itemList[index]['fotograf']
+                            .toString(),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                _mainController.itemList[index]['fotograf'],
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            fit: BoxFit.cover,
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 16.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                _listeController.itemList[index]['sehir'],
-                                style: ConstantsText.textStyle16WB,
-                              ),
-                              Spacer(),
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: ConstantsColor.appColorW,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12.0, vertical: 4.0),
-                                  child: Text(
-                                    '\$' +
-                                        _listeController.itemList[index]
-                                            ['ucret'],
-                                    style: ConstantsText.textStyle16B,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 16.0),
+                            child: Material(
+                              type: MaterialType.transparency,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    _mainController.itemList[index]['sehir'],
+                                    style: ConstantsText.textStyle16WB,
                                   ),
-                                ),
+                                  Spacer(),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      color: ConstantsColor.appColorW,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0, vertical: 4.0),
+                                      child: Text(
+                                        '\$' +
+                                            _mainController.itemList[index]
+                                                ['ucret'],
+                                        style: ConstantsText.textStyle16B,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

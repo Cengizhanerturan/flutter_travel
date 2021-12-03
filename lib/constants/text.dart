@@ -93,6 +93,12 @@ class ConstantsText {
     fontFamily: textFontFamily,
     fontSize: 16,
   );
+  static const TextStyle textStyle16BB = TextStyle(
+    color: ConstantsColor.textColor3,
+    fontFamily: textFontFamily,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
   static const TextStyle textStyle18W = TextStyle(
     color: ConstantsColor.textColor1,
     fontFamily: textFontFamily,
@@ -152,6 +158,11 @@ class ConstantsText {
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle textStyle24B = TextStyle(
+    color: ConstantsColor.textColor3,
+    fontFamily: textFontFamily,
+    fontSize: 24,
+  );
   static const TextStyle textStyle24BB = TextStyle(
     color: ConstantsColor.textColor3,
     fontFamily: textFontFamily,
@@ -160,6 +171,17 @@ class ConstantsText {
   );
   static const TextStyle textStyle24PB = TextStyle(
     color: ConstantsColor.textColor5,
+    fontFamily: textFontFamily,
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle textStyle24G = TextStyle(
+    color: ConstantsColor.textColor4,
+    fontFamily: textFontFamily,
+    fontSize: 24,
+  );
+  static const TextStyle textStyle24GB = TextStyle(
+    color: ConstantsColor.textColor4,
     fontFamily: textFontFamily,
     fontSize: 24,
     fontWeight: FontWeight.bold,
