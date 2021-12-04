@@ -34,6 +34,7 @@ class HomePage extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: ConstantsColor.appColorG.withOpacity(0.6),
                     radius: 30,
+                    backgroundImage: AssetImage('assets/images/profil.jpeg'),
                   ),
                 ],
               ),

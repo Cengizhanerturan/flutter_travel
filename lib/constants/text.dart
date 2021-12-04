@@ -109,6 +109,11 @@ class ConstantsText {
     fontFamily: textFontFamily,
     fontSize: 18,
   );
+  static const TextStyle textStyle18G = TextStyle(
+    color: ConstantsColor.textColor4,
+    fontFamily: textFontFamily,
+    fontSize: 18,
+  );
   static const TextStyle textStyle18B = TextStyle(
     color: ConstantsColor.textColor3,
     fontFamily: textFontFamily,

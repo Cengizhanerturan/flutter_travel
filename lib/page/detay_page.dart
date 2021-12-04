@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_travel/constants/color.dart';
 import 'package:flutter_travel/constants/text.dart';
 import 'package:flutter_travel/controller/main_controller.dart';
+import 'package:flutter_travel/page/credit_card_pade.dart';
 import 'package:get/get.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 MainController _mainController = Get.find<MainController>();
 
@@ -20,15 +22,35 @@ class DetayPage extends StatelessWidget {
     String sehir = liste[index]['sehir'].toString().toLowerCase();
     String ucret = liste[index]['ucret'].toString();
     _mainController.biletUcreti.value = int.parse(ucret);
-    _mainController.biletAdedi.value = 0;
+    debugPrint('Bilet ucreti: ' + _mainController.biletUcreti.value.toString());
+    debugPrint('Bilet adedi: ' + _mainController.biletAdedi.value.toString());
     return Scaffold(
       body: Stack(
         children: [
           Hero(
             tag: liste[index]['fotograf'].toString(),
             child: Container(
-              height: 340,
-              child: ListView(
+              height: 360,
+              child: Swiper(
+                itemCount: 3,
+                autoplay: true,
+                autoplayDelay: 10000,
+                onTap: (tapIndex) {},
+                onIndexChanged: (changedIndex) {},
+                pagination: SwiperPagination(
+                  margin: EdgeInsets.only(bottom: Get.height * 0.0865),
+                  builder: DotSwiperPaginationBuilder(
+                    activeColor: ConstantsColor.appColorR.withOpacity(0.8),
+                  ),
+                ),
+                itemBuilder: (BuildContext context, index) {
+                  return Image.asset(
+                    'assets/images/${sehir}-${index + 1}.jpg',
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+              /* child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
                   Container(
@@ -53,11 +75,11 @@ class DetayPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ), */
             ),
           ),
           DelayedDisplay(
-            delay: Duration(milliseconds: 1500),
+            delay: Duration(milliseconds: 400),
             child: Column(
               children: [
                 Spacer(),
@@ -369,7 +391,7 @@ class DetayPage extends StatelessWidget {
                                         () => AnimatedFlipCounter(
                                           value:
                                               _mainController.biletAdedi.value,
-                                          duration: Duration(milliseconds: 500),
+                                          duration: Duration(milliseconds: 400),
                                           textStyle: ConstantsText.textStyle18B,
                                         ),
                                       ),
@@ -430,7 +452,7 @@ class DetayPage extends StatelessWidget {
                                             _mainController.biletAdedi.value,
                                         prefix: '\$',
                                         textStyle: ConstantsText.textStyle20BB,
-                                        duration: Duration(milliseconds: 800),
+                                        duration: Duration(milliseconds: 400),
                                       ),
                                     ),
                                   ],
@@ -446,7 +468,9 @@ class DetayPage extends StatelessWidget {
                           height: 20,
                         ),
                         BouncingWidget(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => CreditCardPage());
+                          },
                           duration: Duration(milliseconds: 200),
                           scaleFactor: 1.5,
                           child: Container(
@@ -475,7 +499,7 @@ class DetayPage extends StatelessWidget {
             top: 40,
             left: 10,
             child: DelayedDisplay(
-              delay: Duration(milliseconds: 1500),
+              delay: Duration(milliseconds: 400),
               child: BouncingWidget(
                 onPressed: () {
                   Get.back();
