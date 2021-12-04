@@ -1,4 +1,5 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_travel/constants/color.dart';
 import 'package:flutter_travel/constants/text.dart';
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Where would you like to travel?',
+                      'Nereye seyahat etmek istersin?',
                       style: ConstantsText.textStyle24BB,
                     ),
                   ),
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: ConstantsColor.appColorG.withOpacity(0.2),
-                  hintText: 'Search',
+                  hintText: 'Ara',
                   hintStyle: ConstantsText.textStyle16B,
                   suffixIcon: Icon(
                     Icons.search,
@@ -59,194 +60,169 @@ class HomePage extends StatelessWidget {
                 cursorColor: ConstantsColor.appColorB,
               ),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 0;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 0
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'All',
-                              style: _mainController.aracSecimi.value == 0
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Row(
+                      children: [
+                        Obx(
+                          () => BouncingWidget(
+                            onPressed: () {
+                              _mainController.aracSecimi.value = 0;
+                            },
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: _mainController.aracSecimi.value == 0
+                                    ? ConstantsColor.appColorR.withOpacity(0.8)
+                                    : ConstantsColor.appColorG.withOpacity(0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 4.0),
+                                child: Text(
+                                  'Hepsi',
+                                  style: _mainController.aracSecimi.value == 0
+                                      ? ConstantsText.textStyle16W
+                                      : ConstantsText.textStyle16B,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 1;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 1
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'Flight',
-                              style: _mainController.aracSecimi.value == 1
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Obx(
+                          () => BouncingWidget(
+                            onPressed: () {
+                              _mainController.aracSecimi.value = 1;
+                            },
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: _mainController.aracSecimi.value == 1
+                                    ? ConstantsColor.appColorR.withOpacity(0.8)
+                                    : ConstantsColor.appColorG.withOpacity(0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 4.0),
+                                child: Text(
+                                  'Uçak',
+                                  style: _mainController.aracSecimi.value == 1
+                                      ? ConstantsText.textStyle16W
+                                      : ConstantsText.textStyle16B,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 2;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 2
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'Train',
-                              style: _mainController.aracSecimi.value == 2
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Obx(
+                          () => BouncingWidget(
+                            onPressed: () {
+                              _mainController.aracSecimi.value = 2;
+                            },
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: _mainController.aracSecimi.value == 2
+                                    ? ConstantsColor.appColorR.withOpacity(0.8)
+                                    : ConstantsColor.appColorG.withOpacity(0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 4.0),
+                                child: Text(
+                                  'Tren',
+                                  style: _mainController.aracSecimi.value == 2
+                                      ? ConstantsText.textStyle16W
+                                      : ConstantsText.textStyle16B,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 3;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 3
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'Bus',
-                              style: _mainController.aracSecimi.value == 3
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Obx(
+                          () => BouncingWidget(
+                            onPressed: () {
+                              _mainController.aracSecimi.value = 3;
+                            },
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: _mainController.aracSecimi.value == 3
+                                    ? ConstantsColor.appColorR.withOpacity(0.8)
+                                    : ConstantsColor.appColorG.withOpacity(0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 4.0),
+                                child: Text(
+                                  'Otobüs',
+                                  style: _mainController.aracSecimi.value == 3
+                                      ? ConstantsText.textStyle16W
+                                      : ConstantsText.textStyle16B,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 4;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 4
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'Cruise',
-                              style: _mainController.aracSecimi.value == 4
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Obx(
+                          () => BouncingWidget(
+                            onPressed: () {
+                              _mainController.aracSecimi.value = 4;
+                            },
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: _mainController.aracSecimi.value == 4
+                                    ? ConstantsColor.appColorR.withOpacity(0.8)
+                                    : ConstantsColor.appColorG.withOpacity(0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 4.0),
+                                child: Text(
+                                  'Gemi',
+                                  style: _mainController.aracSecimi.value == 4
+                                      ? ConstantsText.textStyle16W
+                                      : ConstantsText.textStyle16B,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Obx(
-                      () => BouncingWidget(
-                        onPressed: () {
-                          _mainController.aracSecimi.value = 5;
-                        },
-                        duration: Duration(milliseconds: 200),
-                        scaleFactor: 1.5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: _mainController.aracSecimi.value == 5
-                                ? ConstantsColor.appColorR.withOpacity(0.8)
-                                : ConstantsColor.appColorG.withOpacity(0.3),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 4.0),
-                            child: Text(
-                              'Motors',
-                              style: _mainController.aracSecimi.value == 5
-                                  ? ConstantsText.textStyle16W
-                                  : ConstantsText.textStyle16B,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               Expanded(
                 child: StaggeredGridView.countBuilder(
@@ -267,6 +243,7 @@ class HomePage extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
+                            color: ConstantsColor.appColorR.withOpacity(0.8),
                             image: DecorationImage(
                               image: AssetImage(
                                 _mainController.itemList[index]['fotograf'],

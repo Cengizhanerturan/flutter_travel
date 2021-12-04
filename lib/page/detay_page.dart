@@ -118,14 +118,13 @@ class DetayPage extends StatelessWidget {
                                                 1
                                         ? ConstantsColor.appColorR
                                             .withOpacity(0.8)
-                                        : ConstantsColor.appColorW
-                                            .withOpacity(0.3),
+                                        : ConstantsColor.appColorW,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 24.0, vertical: 8.0),
                                     child: Text(
-                                      'Flight',
+                                      'Uçak',
                                       style: _mainController.aracSecimi.value >
                                                   3 ||
                                               _mainController
@@ -154,14 +153,13 @@ class DetayPage extends StatelessWidget {
                                     color: _mainController.aracSecimi.value == 2
                                         ? ConstantsColor.appColorR
                                             .withOpacity(0.8)
-                                        : ConstantsColor.appColorW
-                                            .withOpacity(0.3),
+                                        : ConstantsColor.appColorW,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 24.0, vertical: 8.0),
                                     child: Text(
-                                      'Train',
+                                      'Tren',
                                       style:
                                           _mainController.aracSecimi.value == 2
                                               ? ConstantsText.textStyle16W
@@ -184,14 +182,13 @@ class DetayPage extends StatelessWidget {
                                     color: _mainController.aracSecimi.value == 3
                                         ? ConstantsColor.appColorR
                                             .withOpacity(0.8)
-                                        : ConstantsColor.appColorW
-                                            .withOpacity(0.3),
+                                        : ConstantsColor.appColorW,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 24.0, vertical: 8.0),
                                     child: Text(
-                                      'Bus',
+                                      'Otobüs',
                                       style:
                                           _mainController.aracSecimi.value == 3
                                               ? ConstantsText.textStyle16W
@@ -279,12 +276,12 @@ class DetayPage extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '10:40am',
+                                              '10:40',
                                               style:
                                                   ConstantsText.textStyle16BB,
                                             ),
                                             Text(
-                                              '04.26.2021, Tue',
+                                              '26.06.2021, Salı',
                                               style: ConstantsText.textStyle16B,
                                             )
                                           ],
@@ -295,12 +292,12 @@ class DetayPage extends StatelessWidget {
                                               CrossAxisAlignment.end,
                                           children: [
                                             Text(
-                                              '12:40am',
+                                              '12:40',
                                               style:
                                                   ConstantsText.textStyle16BB,
                                             ),
                                             Text(
-                                              '04.27.2021, Wed',
+                                              '27.04.2021, Çarşamba',
                                               style: ConstantsText.textStyle16B,
                                             )
                                           ],
@@ -354,7 +351,7 @@ class DetayPage extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                'Ticket',
+                                'Bilet Adet',
                                 style: ConstantsText.textStyle20B,
                               ),
                               SizedBox(
@@ -441,7 +438,7 @@ class DetayPage extends StatelessWidget {
                                       width: 5,
                                     ),
                                     Text(
-                                      'American Airlines',
+                                      'Türk Hava Yoları',
                                       style: ConstantsText.textStyle18B,
                                     ),
                                     Spacer(),
@@ -480,9 +477,9 @@ class DetayPage extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 24.0, vertical: 4.0),
+                                  horizontal: 24.0, vertical: 8.0),
                               child: Text(
-                                'Buy',
+                                'Satın Al',
                                 style: ConstantsText.textStyle20W,
                               ),
                             ),

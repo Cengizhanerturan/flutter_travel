@@ -7,7 +7,10 @@ import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_travel/constants/color.dart';
 import 'package:flutter_travel/constants/text.dart';
+import 'package:flutter_travel/controller/main_controller.dart';
 import 'package:get/get.dart';
+
+MainController _mainController = Get.find<MainController>();
 
 class CreditCardPage extends StatefulWidget {
   @override
@@ -43,6 +46,7 @@ class CreditCardPageState extends State<CreditCardPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Container(
+        color: ConstantsColor.appColorWD,
         child: SafeArea(
           child: Column(
             children: <Widget>[
@@ -119,166 +123,338 @@ class CreditCardPageState extends State<CreditCardPage> {
                 child: SingleChildScrollView(
                   child: DelayedDisplay(
                     delay: Duration(milliseconds: 400),
-                    child: Column(
-                      children: <Widget>[
-                        CreditCardForm(
-                          formKey: formKey,
-                          obscureCvv: true,
-                          obscureNumber: true,
-                          cardNumber: cardNumber,
-                          cvvCode: cvvCode,
-                          isHolderNameVisible: true,
-                          isCardNumberVisible: true,
-                          isExpiryDateVisible: true,
-                          cardHolderName: cardHolderName,
-                          expiryDate: expiryDate,
-                          themeColor: Colors.red,
-                          textColor: Colors.black,
-                          numberValidationMessage: 'Hatalı kart numarası.',
-                          dateValidationMessage: 'Hatalı kart bitiş tarihi.',
-                          cvvValidationMessage: 'Hatalı kart CVV bilgisi.',
-                          cardNumberDecoration: InputDecoration(
-                            labelText: 'Kart Numarası',
-                            hintText: 'XXXX XXXX XXXX XXXX',
-                            hintStyle: ConstantsText.textStyle18B,
-                            labelStyle: ConstantsText.textStyle18B,
-                            filled: true,
-                            fillColor: Colors.red.withOpacity(0.15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                          ),
-                          expiryDateDecoration: InputDecoration(
-                            hintStyle: ConstantsText.textStyle18B,
-                            labelStyle: ConstantsText.textStyle18B,
-                            filled: true,
-                            fillColor: Colors.red.withOpacity(0.15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            labelText: 'Bitiş Tarihi',
-                            hintText: 'XX/XX',
-                          ),
-                          cvvCodeDecoration: InputDecoration(
-                            hintStyle: ConstantsText.textStyle18B,
-                            labelStyle: ConstantsText.textStyle18B,
-                            filled: true,
-                            fillColor: Colors.red.withOpacity(0.15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            labelText: 'CVV',
-                            hintText: 'XXX',
-                          ),
-                          cardHolderDecoration: InputDecoration(
-                            hintStyle: ConstantsText.textStyle18B,
-                            labelStyle: ConstantsText.textStyle18B,
-                            filled: true,
-                            fillColor: Colors.red.withOpacity(0.15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                              ),
-                            ),
-                            labelText: 'Ad Soyad',
-                          ),
-                          onCreditCardModelChange: onCreditCardModelChange,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        BouncingWidget(
-                          duration: Duration(milliseconds: 200),
-                          scaleFactor: 1.5,
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              print('valid!');
-                            } else {
-                              print('invalid!');
-                            }
-                          },
-                          child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: ConstantsColor.appColorR.withOpacity(0.8),
+                              color: ConstantsColor.appColorW,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                CreditCardForm(
+                                  formKey: formKey,
+                                  obscureCvv: true,
+                                  obscureNumber: true,
+                                  cardNumber: cardNumber,
+                                  cvvCode: cvvCode,
+                                  isHolderNameVisible: true,
+                                  isCardNumberVisible: true,
+                                  isExpiryDateVisible: true,
+                                  cardHolderName: cardHolderName,
+                                  expiryDate: expiryDate,
+                                  themeColor: Colors.red,
+                                  textColor: Colors.black,
+                                  numberValidationMessage:
+                                      'Hatalı kart numarası.',
+                                  dateValidationMessage:
+                                      'Hatalı kart bitiş tarihi.',
+                                  cvvValidationMessage:
+                                      'Hatalı kart CVV bilgisi.',
+                                  cardNumberDecoration: InputDecoration(
+                                    labelText: 'Kart Numarası',
+                                    hintText: 'XXXX XXXX XXXX XXXX',
+                                    hintStyle: ConstantsText.textStyle18B,
+                                    labelStyle: ConstantsText.textStyle18B,
+                                    filled: true,
+                                    fillColor: Colors.red.withOpacity(0.15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                  expiryDateDecoration: InputDecoration(
+                                    hintStyle: ConstantsText.textStyle18B,
+                                    labelStyle: ConstantsText.textStyle18B,
+                                    filled: true,
+                                    fillColor: Colors.red.withOpacity(0.15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    labelText: 'Bitiş Tarihi',
+                                    hintText: 'XX/XX',
+                                  ),
+                                  cvvCodeDecoration: InputDecoration(
+                                    hintStyle: ConstantsText.textStyle18B,
+                                    labelStyle: ConstantsText.textStyle18B,
+                                    filled: true,
+                                    fillColor: Colors.red.withOpacity(0.15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    labelText: 'CVV',
+                                    hintText: 'XXX',
+                                  ),
+                                  cardHolderDecoration: InputDecoration(
+                                    hintStyle: ConstantsText.textStyle18B,
+                                    labelStyle: ConstantsText.textStyle18B,
+                                    filled: true,
+                                    fillColor: Colors.red.withOpacity(0.15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(24),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    labelText: 'Ad Soyad',
+                                  ),
+                                  onCreditCardModelChange:
+                                      onCreditCardModelChange,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: ConstantsColor.appColorW,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(24),
+                                bottomRight: Radius.circular(24),
+                              ),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 3.0),
+                                child: Text(
+                                  ' - - - - - - - - - - - - - - - - - - - - - - ',
+                                  textAlign: TextAlign.justify,
+                                  style: ConstantsText.textStyle24G,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: ConstantsColor.appColorW,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ConstantsColor.appColorW,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24.0, vertical: 8.0),
-                              child: Text(
-                                'Satın Al',
-                                style: ConstantsText.textStyle20W,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Bilet Adedi',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        'Bilet Birim Fiyatı',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        'KDV (%18)',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        'Tutar',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        'Toplam Tutar',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        _mainController.biletAdedi.value
+                                            .toString(),
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        '\$${_mainController.biletUcreti.value}',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        '\$${((_mainController.biletAdedi.value * _mainController.biletUcreti.value) * 18) / 100}',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        '\$${_mainController.biletAdedi.value * _mainController.biletUcreti.value}',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                      Text(
+                                        '\$${(_mainController.biletAdedi.value * _mainController.biletUcreti.value) + ((_mainController.biletAdedi.value * _mainController.biletUcreti.value) * 18) / 100}',
+                                        style: ConstantsText.textStyle16BB,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: ConstantsColor.appColorW,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(24),
+                                bottomRight: Radius.circular(24),
+                              ),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 3.0),
+                                child: Text(
+                                  ' - - - - - - - - - - - - - - - - - - - - - - ',
+                                  textAlign: TextAlign.justify,
+                                  style: ConstantsText.textStyle24G,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: ConstantsColor.appColorW,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
+                              ),
+                            ),
+                          ),
+                          BouncingWidget(
+                            duration: Duration(milliseconds: 200),
+                            scaleFactor: 1.5,
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                print('valid!');
+                              } else {
+                                print('invalid!');
+                              }
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: ConstantsColor.appColorW,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(24),
+                                  bottomRight: Radius.circular(24),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Spacer(),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          color: ConstantsColor.appColorR
+                                              .withOpacity(0.8),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 24.0, vertical: 8.0),
+                                          child: Text(
+                                            'Satın Al',
+                                            style: ConstantsText.textStyle20W,
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
